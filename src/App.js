@@ -1,13 +1,14 @@
 import React from 'react'; 
 
 //components
-import Navbar from './components/Navbar';
+import Contact from './components/contact/Contact';
+
 
 
 const App = () => {
   return ( 
     <>
-        <Navbar/>
+      <Contact/>
     </>
    );
 }

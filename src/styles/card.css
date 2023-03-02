@@ -1,0 +1,109 @@
+
+.card{
+  width: 500px;
+  background-color: #44475a;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.card .cardbody{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.card .cardbody .imgcard{
+  width: fit-content;
+}
+
+.card .cardbody .imgcard img{
+  width: 160px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.card .cardbody .infocard{
+  width: 250px;
+}
+
+.card .cardbody .infocard ul{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card .cardbody .infocard ul li{
+  width: 100%;
+  height: fit-content;
+  border-bottom: 1px solid #44475a;
+  padding: 10px 8px;
+  background-color: palegoldenrod;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: center;
+}
+
+.card .cardbody .infocard ul li:nth-child(1){
+  border-radius: 5px 5px 0 0;
+}
+
+.card .cardbody .infocard ul li:nth-last-child(1){
+  border-radius: 0 0 5px 5px;
+  border: none;
+}
+
+.card .cardbody .btnscard{
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .cardbody .btnscard button{
+  width: 45px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.card .cardbody .btnscard .showInfo{
+  background-color: rgb(255, 174, 0);
+}
+.card .cardbody .btnscard .editInfo{
+  background-color: rgb(0, 204, 255);
+  margin: 5px 0;
+}
+.card .cardbody .btnscard .deleteInfo{
+  background-color: rgb(255, 30, 0);
+}
+
+.card .cardbody .btnscard button i{
+  background-color: none;
+  font-size: 17px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
