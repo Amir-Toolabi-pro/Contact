@@ -1,6 +1,6 @@
 
 //style
-import "../../styles/formcontact.css"
+import "../../../styles/formcontact.css"
 
 const FormContact = () => {
   return (

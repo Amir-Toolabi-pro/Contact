@@ -1,4 +1,4 @@
-import FormContact from "./contact/FormContact";
+import FormContact from "./contact/form/FormContact";
 
 import "../styles/navbar.css"
 
