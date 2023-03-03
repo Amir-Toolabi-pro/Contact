@@ -19,6 +19,7 @@
   border: none;
   font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .btn_add_contact button i{
