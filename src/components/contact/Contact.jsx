@@ -1,25 +1,23 @@
 
-import Navbar from "../Navbar";
-import AddContact from "./cards/AddContact";
 import CardMap from "./cards/CardMap";
 
 import "../../styles/contact.css"
 import { useState } from "react";
 import NotFound from "./cards/NotFound";
 import Spinner from "../Spinner";
+import AddContactBtn from "./cards/AddContactBtn";
 
 const Contact = () => {
 
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([1]);
   const [loading, setLoading] = useState(false);
 
   return (
     <>
-      <Navbar />
 
       {loading ?
         undefined :
-        <AddContact />
+        <AddContactBtn />
       }
 
       {loading ?

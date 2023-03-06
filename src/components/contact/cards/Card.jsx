@@ -2,9 +2,13 @@
 
 import "../../../styles/card.css"
 
+import { Navigate } from "react-router-dom";
+
 import prof from "../../../images/img-placeholder.png"
 
+
 const Card = () => {
+
   return (
     <>
       <div className="card">
@@ -20,7 +24,7 @@ const Card = () => {
             </ul>
           </div>
           <div className="btnscard">
-            <button className="showInfo" ><i className="fa fa-eye" /></button>
+            <button onClick={()=> <Navigate to="/contacts" /> } className="showInfo" ><i className="fa fa-eye" /></button>
             <button className="editInfo" ><i className="fa fa-pen" /></button>
             <button className="deleteInfo" ><i className="fa fa-trash" /></button>
           </div>
