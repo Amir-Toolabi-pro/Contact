@@ -11,7 +11,7 @@ const AddContactBtn = () => {
   return ( 
     <>
       <div className="btn_add_contact">
-        <button onClick={() => navigate("/addContact") }>
+        <button onClick={() => navigate("/addContact  ") }>
           ساخت مخاطب جدید {" "} {" "} {" "}
           <i className="fa fa-plus-circle" />
         </button>
