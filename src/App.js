@@ -7,51 +7,78 @@ import ShowInfoContact from "./components/contact/cards/ShowInfoContact";
 import EditContact from "./components/contact/cards/EditContact";
 
 //Router
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import AddContact from "./components/contact/cards/AddContact";
 
 //axios
-import axios from "axios";
-
+import { getAllContacts, getAllGroups, createContact } from "./services/contactServices";
 
 const App = () => {
 
   const [contacts, setContacts] = useState([]);
-  const [group, setGroup] = useState([]);
+  const [getGroups, setGetGroups] = useState([]);
+  const [getContact, setGetContact] = useState({
+    fullname: "",
+    photo: "",
+    mobile: "",
+    email: "",
+    job: "",
+    group: "",
+  });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
-  useEffect(()=>{
-
-    const fetchData = async ()=>{
-
-      try{
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         setLoading(true);
 
-        const {data: contactsData} = await axios.get("http://localhost:9000/contacts");
-        const {data: groupData} = await axios.get("http://localhost:9000/groups");
+        const { data: contactsData } = await getAllContacts();
+        const { data: groupData } = await getAllGroups();
         setContacts(contactsData);
         // console.log(contacts);
-        setGroup(groupData);
-        
+        setGetGroups(groupData);
+
         setLoading(false);
-      }catch(err){
+      } catch (err) {
         console.log(err);
         setLoading(false);
       }
-
-    }
+    };
     fetchData();
+  }, []);
 
-  },[]);
+  const setContactInfo = (event) => {
+    setGetContact({ ...getContact, [event.target.name]: event.target.value,});
+  };
 
+  const createContactForm = async (e)=> {
+    e.preventDefault();
+      try{
+        const {status} = await createContact(getContact);
+        console.log(status);
+        console.log(getContact);
+        if (status === 201){
+          navigate("/")
+        }
+      }catch(err){
+        console.log(err);
+      }
+  }
 
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Contact contacts = {contacts} loading = {loading} />} />
-        <Route path="/addContact" element={<AddContact />} />
-        <Route path="/showcontact/:contactShowId" element={<ShowInfoContact />} />
+        <Route
+          path="/"
+          element={<Contact contacts={contacts} loading={loading} />}
+        />
+        <Route path="/addContact" element={<AddContact createContactForm={createContactForm} groups={getGroups} setContactInfo={setContactInfo} contact={getContact} />} />
+        <Route
+          path="/showcontact/:contactShowId"
+          element={<ShowInfoContact />}
+        />
         <Route path="/Editcontact/:contactEditId" element={<EditContact />} />
       </Routes>
     </>

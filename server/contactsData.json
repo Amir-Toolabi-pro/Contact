@@ -26,9 +26,17 @@
       "job": "برنامه نویس فول استک",
       "group": "۲",
       "id": 3
+    },
+    {
+      "fullname": "رامین مرادی",
+      "photo": "",
+      "mobile": "۰۹۱۲۵۶۵۴۵۳۵",
+      "email": "ramin.m@gmail.com",
+      "job": "مهندس معمار",
+      "group": "۲",
+      "id": 5
     }
   ],
-
   "groups": [
     {
       "id": "1",

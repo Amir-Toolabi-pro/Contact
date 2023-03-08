@@ -5,7 +5,7 @@ import "../../../styles/formcontact.css"
 const FormContact = () => {
   return (
     <>
-      <form dir="ltr" >
+      <form className="form_nav" dir="ltr" >
         <span className="input-group-text " id="basic-addon1" >
           <i className="fas fa-search" />
         </span>

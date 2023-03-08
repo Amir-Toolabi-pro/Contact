@@ -1,28 +1,121 @@
+.add_content {
+  width: 90%;
+  margin: 20px auto 0;
+}
 
-.btn_add_contact{
+.add_content h3 {
+  width: 100%;
+  text-align: center;
+  color: rgb(24, 253, 24);
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.add_content .add_content_container {
   width: 100%;
   display: flex;
   justify-content: center;
   height: fit-content;
-  margin: 20px 0 40px;
 }
 
-.btn_add_contact button{
+.add_content .add_content_container .logo {
+  width: 55%;
+  background: url(../images/man-taking-note.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: left center;
+}
+
+.add_content .add_content_container .form_holder {
+  width: 40%;
+  padding: 40px 0;
+}
+
+.add_content .add_content_container .form_holder form {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  width: 160px;
-  height: 50px;
-  background-color: rgb(255, 0, 255);
+  flex-direction: column;
+}
+
+.add_content .add_content_container .form_holder form select {
+  width: 100%;
   outline: none;
   border: none;
+  border: 1px solid #bd93f9;
+  background-color: #44475a;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  color: #f8f8f4;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.add_content .add_content_container .form_holder form input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid #bd93f9;
+  background-color: #44475a;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  color: #f8f8f4;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.add_content .add_content_container .form_holder form input::placeholder {
+  color: #f8f8f4;
   font-size: 14px;
-  font-weight: 600;
+}
+
+.add_content .add_content_container .form_holder form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.add_content .add_content_container .form_holder form div button {
+  width: fit-content;
+  padding: 5px 15px;
+  color: #000;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  margin: 0 5px;
   cursor: pointer;
 }
 
-.btn_add_contact button i{
-  font-size: 17px;
-  margin-right: 10px;
+.add_content .add_content_container .form_holder form div button:nth-child(1) {
+  background-color: #d338fa;
+  transition: all ease 0.2s;
+}
+.add_content
+  .add_content_container
+  .form_holder
+  form
+  div
+  button:nth-child(1):hover {
+  background-color: #ea06ff;
+  box-shadow: 0px 0px 17px 0px rgba(234, 6, 255, 1);
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(234, 6, 255, 1);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(234, 6, 255, 1);
+}
+
+.add_content .add_content_container .form_holder form div button:nth-child(2) {
+  background-color: #7266aa;
+  transition: all ease 0.2s;
+}
+.add_content
+  .add_content_container
+  .form_holder
+  form
+  div
+  button:nth-child(2):hover {
+  background-color: #a794fc;
+  box-shadow: 0px 0px 17px 0px rgba(167, 148, 252, 1);
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(167, 148, 252, 1);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(167, 148, 252, 1);
 }

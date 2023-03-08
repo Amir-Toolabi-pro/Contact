@@ -1,11 +1,11 @@
-form{
+.form_nav{
   width: 100%;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
 }
 
-form input{
+.form_nav input{
   width: 80%;
   outline: none;
   border: none;
@@ -20,12 +20,12 @@ form input{
   border-radius: 0 5px 5px 0;
 }
 
-form input::placeholder{
+.form_nav input::placeholder{
   color: #f8f8f4;
   font-size: 14px;
 }  
 
-form span{
+.form_nav span{
   border-top: 1px solid #f8f8f2;
   border-left: 1px solid #f8f8f2;
   border-bottom: 1px solid #f8f8f2;
