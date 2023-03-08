@@ -17,6 +17,7 @@ const App = () => {
 
   const [contacts, setContacts] = useState([]);
   const [getGroups, setGetGroups] = useState([]);
+  const [forceRender, setForceRender] = useState(false);
   const [getContact, setGetContact] = useState({
     fullname: "",
     photo: "",
@@ -52,6 +53,23 @@ const App = () => {
     setGetContact({ ...getContact, [event.target.name]: event.target.value,});
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        const { data: contactsData } = await getAllContacts();
+        setContacts(contactsData);
+
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [forceRender]);
+
   const createContactForm = async (e)=> {
     e.preventDefault();
       try{
@@ -59,6 +77,8 @@ const App = () => {
         console.log(status);
         console.log(getContact);
         if (status === 201){
+          setForceRender(!forceRender);
+          setGetContact({});
           navigate("/")
         }
       }catch(err){
@@ -76,7 +96,7 @@ const App = () => {
         />
         <Route path="/addContact" element={<AddContact createContactForm={createContactForm} groups={getGroups} setContactInfo={setContactInfo} contact={getContact} />} />
         <Route
-          path="/showcontact/:contactShowId"
+          path="/:contactId"
           element={<ShowInfoContact />}
         />
         <Route path="/Editcontact/:contactEditId" element={<EditContact />} />

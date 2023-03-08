@@ -2,12 +2,14 @@
 
 import "../../../styles/card.css"
 
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import prof from "../../../images/img-placeholder.png"
 
 
 const Card = ({contact}) => {
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -24,7 +26,7 @@ const Card = ({contact}) => {
             </ul>
           </div>
           <div className="btnscard">
-            <button onClick={()=> <Navigate to="/contacts" /> } className="showInfo" ><i className="fa fa-eye" /></button>
+            <button onClick={()=> navigate(`/${contact.id}`) } className="showInfo" ><i className="fa fa-eye" /></button>
             <button className="editInfo" ><i className="fa fa-pen" /></button>
             <button className="deleteInfo" ><i className="fa fa-trash" /></button>
           </div>
