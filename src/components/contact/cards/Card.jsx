@@ -7,20 +7,20 @@ import { Navigate } from "react-router-dom";
 import prof from "../../../images/img-placeholder.png"
 
 
-const Card = () => {
+const Card = ({contact}) => {
 
   return (
     <>
       <div className="card">
         <div className="cardbody">
           <div className="imgcard">
-            <img src={prof} alt="" />
+            <img src={contact.photo || prof} alt="" />
           </div>
           <div className="infocard">
             <ul>
-              <li>نام و نام خانوادگی: امیرحسین طولابی</li>
-              <li>شماره تماس: ۰۹۱۶۰۵۳۷۱۳۰</li>
-              <li>آدرس ایمیل: amirtoolabi81@gmail.com</li>
+              <li>نام و نام خانوادگی: {contact.fullname}</li>
+              <li>شماره تماس: {contact.mobile}</li>
+              <li>آدرس ایمیل: {contact.email}</li>
             </ul>
           </div>
           <div className="btnscard">

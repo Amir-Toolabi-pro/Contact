@@ -3,12 +3,13 @@ import Card from "./Card";
 import "../../../styles/cardmap.css"
 
 
-const CardMap = () => {
+const CardMap = ({ persons }) => {
   return (
     <>
       <div className="cards_holder">
-        <Card />
-        <Card />
+        {persons.map(c => {
+          return <Card contact={c} key={c.id} />
+        })}
       </div>
     </>
   );
