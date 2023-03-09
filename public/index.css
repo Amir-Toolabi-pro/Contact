@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Vazir';
+  src: url('./fonts/vazir/Vazir.ttf');
+  src: url('./fonts/vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/vazir/Vazir.woff2') format('woff2'),
+      url('./fonts/vazir/Vazir.woff') format('woff'),
+      url('./fonts/vazir/Vazir.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Vazir" , Tahoma;
+}
+
+body{
+  font-family: "Vazir" , Tahoma;
+  margin: 0;
+  padding: 0;
+  background-color: #2a2a36;
+}
+
+input{
+  color: #f8f8f4 !important;
+}
+
+input::placeholder{
+  color: #f8f8f4 !important;
+}

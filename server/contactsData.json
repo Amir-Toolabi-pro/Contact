@@ -1,0 +1,31 @@
+{
+  "contacts": [
+    {
+      "fullname": "محمد سجادپور",
+      "photo": "https://quera.org/media/CACHE/images/public/avatars/abeb8ce0add0418fa61c56f5a3d4d289/952625f4828d6593b63d662e371df8bf.jpg",
+      "mobile": "4444",
+      "email": "amirtoolabi81@gmail.com",
+      "job": "طراح وب",
+      "group": "۳",
+      "id": 1
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "خانواده"
+    },
+    {
+      "id": "۲",
+      "name": "رفیق"
+    },
+    {
+      "id": "۳",
+      "name": "فامیل"
+    },
+    {
+      "id": "۴",
+      "name": "همکار"
+    }
+  ]
+}

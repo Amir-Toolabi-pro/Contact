@@ -1,0 +1,10 @@
+
+
+.cards_holder{
+  width: 100%;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
