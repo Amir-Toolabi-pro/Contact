@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+//public style
+import './styles/index.css'
+
 //components
 import Contact from "./components/contact/Contact";
 import Navbar from "./components/Navbar";
@@ -7,11 +10,14 @@ import ShowInfoContact from "./components/contact/cards/ShowInfoContact";
 import EditContact from "./components/contact/cards/EditContact";
 
 //Router
-import { Route, Routes, useNavigate } from "react-router-dom";
+import {Navigate , Route, Routes, useNavigate } from "react-router-dom";
 import AddContact from "./components/contact/cards/AddContact";
 
 //axios
 import { getAllContacts, getAllGroups, createContact } from "./services/contactServices";
+
+
+
 
 const App = () => {
 
@@ -57,10 +63,8 @@ const App = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-
         const { data: contactsData } = await getAllContacts();
         setContacts(contactsData);
-
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -92,6 +96,10 @@ const App = () => {
       <Routes>
         <Route
           path="/"
+          element={<Navigate to ="/contacts"/>}
+        />
+        <Route
+          path="/contacts"
           element={<Contact contacts={contacts} loading={loading} />}
         />
         <Route path="/addContact" element={<AddContact createContactForm={createContactForm} groups={getGroups} setContactInfo={setContactInfo} contact={getContact} />} />
@@ -99,7 +107,7 @@ const App = () => {
           path="/:contactId"
           element={<ShowInfoContact />}
         />
-        <Route path="/Editcontact/:contactEditId" element={<EditContact />} />
+        <Route path="/Editcontact/:contactId" element={<EditContact />} />
       </Routes>
     </>
   );

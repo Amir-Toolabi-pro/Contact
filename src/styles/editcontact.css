@@ -1,9 +1,9 @@
-.add_content {
+.edit_content {
   width: 90%;
   margin: 20px auto 0;
 }
 
-.add_content h3 {
+.edit_content h3 {
   width: 100%;
   text-align: center;
   color: rgb(24, 253, 24);
@@ -11,32 +11,37 @@
   font-size: 22px;
 }
 
-.add_content .add_content_container {
+.edit_content .edit_content_container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   height: fit-content;
 }
 
-.add_content .add_content_container .logo {
-  width: 55%;
-  background: url(../images/man-taking-note.png) no-repeat;
-  background-size: 100% 100%;
-  background-position: left center;
+.edit_content .edit_content_container .prof {
+  width: 300px;
+  height: 300px;
+  padding-top: 20px;
+  box-sizing: border-box;
 }
 
-.add_content .add_content_container .form_holder {
-  width: 40%;
+.edit_content .edit_content_container .prof img{
+  width: 100%;
+  height: 100%;
+}
+
+.edit_content .edit_content_container .form_holder {
+  width: 50%;
   padding: 40px 0;
 }
 
-.add_content .add_content_container .form_holder form {
+.edit_content .edit_content_container .form_holder form {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.add_content .add_content_container .form_holder form select {
+.edit_content .edit_content_container .form_holder form select {
   width: 100%;
   outline: none;
   border: none;
@@ -50,7 +55,7 @@
   margin-bottom: 5px;
 }
 
-.add_content .add_content_container .form_holder form input {
+.edit_content .edit_content_container .form_holder form input {
   width: 100%;
   outline: none;
   border: none;
@@ -64,39 +69,32 @@
   margin-bottom: 5px;
 }
 
-.add_content .add_content_container .form_holder form input::placeholder {
+.edit_content .edit_content_container .form_holder form input::placeholder {
   color: #f8f8f4;
   font-size: 14px;
 }
 
-<<<<<<< HEAD
-=======
-.add_content
-  .add_content_container
+.edit_content
+  .edit_content_container
   .form_holder
   form
   input::-webkit-outer-spin-button,
-.add_content
-  .add_content_container
+.edit_content
+  .edit_content_container
   .form_holder
   form
   input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.add_content .add_content_container .form_holder form input[type=number] {
-    -moz-appearance:textfield;
-}
-
->>>>>>> 1495b7f (create edit contact component)
-.add_content .add_content_container .form_holder form div {
+.edit_content .edit_content_container .form_holder form div {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-.add_content .add_content_container .form_holder form div button {
+.edit_content .edit_content_container .form_holder form div button {
   width: fit-content;
   padding: 5px 15px;
   color: #000;
@@ -108,12 +106,12 @@
   cursor: pointer;
 }
 
-.add_content .add_content_container .form_holder form div button:nth-child(1) {
+.edit_content .edit_content_container .form_holder form div button:nth-child(1) {
   background-color: #d338fa;
   transition: all ease 0.2s;
 }
-.add_content
-  .add_content_container
+.edit_content
+  .edit_content_container
   .form_holder
   form
   div
@@ -124,12 +122,12 @@
   -moz-box-shadow: 0px 0px 17px 0px rgba(234, 6, 255, 1);
 }
 
-.add_content .add_content_container .form_holder form div button:nth-child(2) {
+.edit_content .edit_content_container .form_holder form div button:nth-child(2) {
   background-color: #7266aa;
   transition: all ease 0.2s;
 }
-.add_content
-  .add_content_container
+.edit_content
+  .edit_content_container
   .form_holder
   form
   div
@@ -140,8 +138,3 @@
   -moz-box-shadow: 0px 0px 17px 0px rgba(167, 148, 252, 1);
 }
 
-@media screen and (max-width: 890px) {
-  .add_content .add_content_container .logo {
-    background-size: 100% 80%;
-  }
-}

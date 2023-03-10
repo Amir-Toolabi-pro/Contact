@@ -1,3 +1,4 @@
+import React from 'react';
 
 //style
 import "../../../styles/formcontact.css"

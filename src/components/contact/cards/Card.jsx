@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import "../../../styles/card.css"
 
 import { useNavigate } from "react-router-dom";
@@ -27,7 +28,7 @@ const Card = ({contact}) => {
           </div>
           <div className="btnscard">
             <button onClick={()=> navigate(`/${contact.id}`) } className="showInfo" ><i className="fa fa-eye" /></button>
-            <button className="editInfo" ><i className="fa fa-pen" /></button>
+            <button  onClick={()=> navigate(`/Editcontact/${contact.id}`) } className="editInfo" ><i className="fa fa-pen" /></button>
             <button className="deleteInfo" ><i className="fa fa-trash" /></button>
           </div>
         </div>

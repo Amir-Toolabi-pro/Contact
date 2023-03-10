@@ -1,3 +1,4 @@
+import React from 'react';
 
 import CardMap from "./cards/CardMap";
 import NotFound from "./cards/NotFound";
