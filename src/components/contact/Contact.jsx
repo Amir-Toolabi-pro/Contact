@@ -8,7 +8,7 @@ import AddContactBtn from "./cards/AddContactBtn";
 import "../../styles/contact.css";
 
 
-const Contact = ({contacts , loading}) => {
+const Contact = ({confirmAlertModal , contacts , loading}) => {
 
   return (
     <>
@@ -22,7 +22,7 @@ const Contact = ({contacts , loading}) => {
         <Spinner /> :
         <section className="contact_body" >
           {contacts.length > 0 ?
-            <CardMap persons={contacts} /> :
+            <CardMap confirmAlertModal={confirmAlertModal} persons={contacts} /> :
             <NotFound />
           }
         </section>

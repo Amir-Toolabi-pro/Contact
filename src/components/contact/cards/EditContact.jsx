@@ -17,7 +17,7 @@ import prof from "../../../images/img-placeholder.png"
 
 
 
-const EditContact = () => {
+const EditContact = ({forceRender , setForceRender}) => {
 
   const [contact , setContact] = useState({});
   const [getGroups , setGetGroups] = useState([]);
@@ -51,7 +51,8 @@ const EditContact = () => {
       try{
         const {status} = await updateContact(contact , contactId);
         console.log(status);
-        navigate("/")
+        setForceRender(!forceRender)
+        navigate("/");
       }catch(err){
         console.log(err);
       }

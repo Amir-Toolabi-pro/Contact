@@ -4,9 +4,13 @@ import React from 'react';
 import FormContact from "./contact/form/FormContact";
 
 import "../styles/navbar.css"
+import { useLocation } from 'react-router-dom';
 
 
-const Navbar = () => {
+const Navbar = ({ filterContacts, query }) => {
+
+  const location = useLocation()
+
   return (
     <>
       <nav>
@@ -17,10 +21,14 @@ const Navbar = () => {
               وب اپلیکیشن مدیریت {"  "}
               <span>مخاطبین</span>
             </p>
-            </div>
+          </div>
+          {location.pathname === "/contacts"?
             <div className="form_contact_holder">
-              <FormContact/>
-            </div>
+            <FormContact query={query} filterContacts={filterContacts} />
+            </div>:
+            null
+          }
+
         </div>
       </nav>
     </>
