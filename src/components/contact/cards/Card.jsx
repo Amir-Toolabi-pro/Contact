@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import prof from "../../../images/img-placeholder.png"
 
 
-const Card = ({contact , confirmAlertModal}) => {
+const Card = ({contact , removeContact}) => {
 
   const navigate = useNavigate()
 
@@ -29,7 +29,7 @@ const Card = ({contact , confirmAlertModal}) => {
           <div className="btnscard">
             <button onClick={()=> navigate(`/${contact.id}`) } className="showInfo" ><i className="fa fa-eye" /></button>
             <button  onClick={()=> navigate(`/Editcontact/${contact.id}`) } className="editInfo" ><i className="fa fa-pen" /></button>
-            <button onClick={confirmAlertModal} className="deleteInfo" ><i className="fa fa-trash" /></button>
+            <button onClick={removeContact} className="deleteInfo" ><i className="fa fa-trash" /></button>
           </div>
         </div>
       </div>

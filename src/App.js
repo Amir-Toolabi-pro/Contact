@@ -24,10 +24,10 @@ import { confirmAlert } from "react-confirm-alert";
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState([]);
+  const [filterContacts, setFliterContacts] = useState([]);
   const [getGroups, setGetGroups] = useState([]);
-  const [forceRender, setForceRender] = useState(false);
   const [query, setQuery] = useState({ text: "" });
+  const [forceRender, setForceRender] = useState(false);
   const [getContact, setGetContact] = useState({
     fullname: "",
     photo: "",
@@ -47,7 +47,8 @@ const App = () => {
         const { data: contactsData } = await getAllContacts();
         const { data: groupData } = await getAllGroups();
         setContacts(contactsData);
-        setFilter(contactsData);
+        setFliterContacts(contactsData);
+        // console.log(contacts);
         setGetGroups(groupData);
         setLoading(false);
       } catch (err) {
@@ -82,7 +83,7 @@ const App = () => {
     try {
       const { status } = await createContact(getContact);
       console.log(status);
-      console.log(getContact);
+      // console.log(getContact);
       if (status === 201) {
         setForceRender(!forceRender);
         setGetContact({});
@@ -93,72 +94,82 @@ const App = () => {
     }
   };
 
-  const removeContact = async (contactId) => {
-    try {
-      const { response } = await deleteContact(contactId);
-      if (response) {
-        const { data: contactsData } = await getAllContacts();
-        setContacts(contactsData);
-        setForceRender(!forceRender);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const confirmAlertModal = (contactId, contactFullname) => {
+  const confirm = (contactId, contactFullname) => {
     confirmAlert({
-      customUI: ({ onclose }) => {
+      customUI: ({ onClose }) => {
         return (
           <div
-            dir="rtl"
             style={{
-              padding: "20px 10px",
-              background: "#282a36",
-              border: "1px solid #ff79c6",
-              borderRadius: "10px",
+              width: "100vw",
+              height: "100vh",
+              position: "absolute",
+              top: "0",
+              left: "0",
+              bottom: "0",
+              right: "0",
+              zIndex: "9",
+              background: "rgba(68, 71, 90, 0.1)",
+              borderRadius: "16px",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(3.6px)",
+              webkitBackdropFilter: "blur(3.6px)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <h3 style={{ color: "#50fa7b", textAlign: "center" }}>حذف مخاطب</h3>
-            <p
+            <div
+              dir="rtl"
               style={{
-                color: "#ff5555",
-                textAlign: "center",
-                margin: "5px 0 10px",
+                backgroundColor: "#f8f8f2",
+                border: `1px solid #bd93f9`,
+                borderRadius: "1em",
+                padding: "10px 15px",
               }}
             >
-              مطمئنی میخوای {contactFullname} رو حذف کنی؟
-            </p>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <button
-                onClick={() => {
-                  removeContact(contactId);
-                  onclose();
-                }}
+              <h3 style={{ color: "#ffb86c", textAlign: "center" }}>
+                پاک کردن مخاطب
+              </h3>
+              <p style={{ color: "red" }}>
+                مطمئنی که میخوای مخاطب {contactFullname} رو پاک کنی ؟
+              </p>
+              <div
                 style={{
-                  outline: "none",
-                  border: "none",
-                  padding: "4px 10px",
-                  cursor: "pointer",
-                  background: "#ff79c6",
-                  margin: "0 5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "10px",
                 }}
               >
-                بله مطمئنم
-              </button>
-              <button
-                onClick={onclose}
-                style={{
-                  outline: "none",
-                  border: "none",
-                  padding: "4px 10px",
-                  cursor: "pointer",
-                  background: "#bd93f9",
-                  margin: "0 5px",
-                }}
-              >
-                منصرف شدم
-              </button>
+                <button
+                  onClick={() => {
+                    removeContact(contactId);
+                    onClose();
+                  }}
+                  style={{
+                    backgroundColor: "#ff5555",
+                    outline: "none",
+                    border: "none",
+                    margin: "0 5px",
+                    padding: "4px 10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  مطمئن هستم
+                </button>
+                <button
+                  onClick={onClose}
+                  style={{
+                    backgroundColor: "#bd93f9",
+                    outline: "none",
+                    border: "none",
+                    margin: "0 5px",
+                    padding: "4px 10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  انصراف
+                </button>
+              </div>
             </div>
           </div>
         );
@@ -166,27 +177,48 @@ const App = () => {
     });
   };
 
-  const filterContacts = (e) => {
-    setQuery({ ...query, text: e.target.value });
-    const allcontacts = contacts.filter((contact) => {
-      return contact.fullname
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase());
-    });
-    setFilter(allcontacts)
+  const removeContact = async (contactId) => {
+    try {
+      setLoading(true);
+      const response = await deleteContact(contactId);
+      if (response) {
+        const { data: contactsData } = await getAllContacts();
+        setContacts(contactsData);
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log(err.message);
+      setLoading(false);
+    }
+  };
+
+  let filterTimeOut;
+  const findContact = (event) => {
+    clearTimeout();
+    setQuery({ ...query, text: event.target.value });
+    console.log(event.target.value);
+    filterTimeOut = setTimeout(() => {
+      setFliterContacts(
+        contacts.filter((contact) => {
+          return contact.fullname
+            .toLowerCase()
+            .includes(event.target.value.toLowerCase());
+        })
+      );
+    }, 2000);
   };
 
   return (
     <>
-      <Navbar query={query.text} filterContacts={filterContacts} />
+      <Navbar query={query.text} search={findContact} />
       <Routes>
         <Route path="/" element={<Navigate to="/contacts" />} />
         <Route
           path="/contacts"
           element={
             <Contact
-              confirmAlertModal={confirmAlertModal}
-              contacts={filter}
+              removeContact={confirm}
+              contacts={filterContacts}
               loading={loading}
             />
           }
@@ -203,15 +235,7 @@ const App = () => {
           }
         />
         <Route path="/:contactId" element={<ShowInfoContact />} />
-        <Route
-          path="/Editcontact/:contactId"
-          element={
-            <EditContact
-              forceRender={forceRender}
-              setForceRender={setForceRender}
-            />
-          }
-        />
+        <Route path="/Editcontact/:contactId" element={<EditContact />} />
       </Routes>
     </>
   );

@@ -6,12 +6,12 @@ import Card from "./Card";
 import "../../../styles/cardmap.css"
 
 
-const CardMap = ({ persons , confirmAlertModal }) => {
+const CardMap = ({ persons , removeContact }) => {
   return (
     <>
       <div className="cards_holder">
         {persons.map(c => {
-          return <Card confirmAlertModal={() => confirmAlertModal(c.id , c.fullname)} contact={c} key={c.id} />
+          return <Card removeContact={()=> removeContact(c.id , c.fullname)} contact={c} key={c.id} />
         })}
       </div>
     </>

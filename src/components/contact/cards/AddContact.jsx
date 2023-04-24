@@ -33,7 +33,7 @@ const AddContact = ({ contact, setContactInfo, groups, createContactForm }) => {
               </select>
               <div>
                 <button>ساخت مخاطب</button>
-                <button onClick={()=> navigate("/")} >انصراف</button>
+                <button>انصراف</button>
               </div>
             </form>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import CardMap from "./cards/CardMap";
 import NotFound from "./cards/NotFound";
@@ -8,7 +8,7 @@ import AddContactBtn from "./cards/AddContactBtn";
 import "../../styles/contact.css";
 
 
-const Contact = ({confirmAlertModal , contacts , loading}) => {
+const Contact = ({contacts , loading , removeContact}) => {
 
   return (
     <>
@@ -22,7 +22,7 @@ const Contact = ({confirmAlertModal , contacts , loading}) => {
         <Spinner /> :
         <section className="contact_body" >
           {contacts.length > 0 ?
-            <CardMap confirmAlertModal={confirmAlertModal} persons={contacts} /> :
+            <CardMap removeContact={removeContact} persons={contacts} /> :
             <NotFound />
           }
         </section>
