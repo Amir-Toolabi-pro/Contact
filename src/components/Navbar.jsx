@@ -1,30 +1,35 @@
-import React from 'react';
+import { useLocation } from "react-router-dom";
 
+import SearchContact from "./Contacts/SearchContact";
 
-import FormContact from "./contact/form/FormContact";
+import { BACKGROUND, PURPLE } from "../helpers/colors";
 
-import "../styles/navbar.css"
+const Navbar = () => {
+  const location = useLocation();
 
-
-const Navbar = ({query , search}) => {
   return (
-    <>
-      <nav>
-        <div className="container">
-          <div className="nav_title">
-            <p>
-              <i className="fas fa-id-badge" />
-              وب اپلیکیشن مدیریت {"  "}
-              <span>مخاطبین</span>
-            </p>
+    <nav
+      className="navbar navbar-dark navbar-expand-sm shadow-lg"
+      style={{ backgroundColor: BACKGROUND }}
+    >
+      <div className="container">
+        <div className="row w-100">
+          <div className="col">
+            <div className="navbar-brand">
+              <i className="fas fa-id-badge" style={{ color: PURPLE }} /> وب
+              اپلیکیشن مدیریت{"  "}
+              <span style={{ color: PURPLE }}>مخاطبین</span>
             </div>
-            <div className="form_contact_holder">
-              <FormContact query={query} search={search} />
+          </div>
+          {location.pathname === "/contacts" ? (
+            <div className="col">
+              <SearchContact />
             </div>
+          ) : null}
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;
